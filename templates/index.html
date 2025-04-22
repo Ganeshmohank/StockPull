@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Info Checker</title>
+</head>
+<body>
+    <h2>Enter a Stock Symbol</h2>
+    <form method="post">
+        <input type="text" name="symbol" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if stock %}
+        {% if stock.error %}
+            <p style="color:red;">{{ stock.error }}</p>
+        {% else %}
+            <p><strong>{{ stock.time }}</strong></p>
+            <h3>{{ stock.name }} ({{ stock.symbol }})</h3>
+            <p>{{ stock.price }} {{ stock.change }} ({{ stock.percent }})</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
